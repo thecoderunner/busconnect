@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "busconnect"]
+	url = https://thecoderunner@bitbucket.org/thecoderunner/busconnect.git
+	fetch = +refs/heads/*:refs/remotes/busconnect/*
+[branch "master"]
+	remote = busconnect
+	merge = refs/heads/master
+[user]
+	name = thecoderunner
+	email = reeper99@gmail.com
