@@ -22,7 +22,7 @@ function filterforstop(arrivaltimes){
 };//end filterstop
 
 function showtraindepartures(){
-	$("body").load("index.php");
+	$("body").load("index.html");
 }
 
 function timeconversion(traintimes, startorend){

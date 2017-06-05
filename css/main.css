@@ -4,7 +4,7 @@
 
 body {
 	height: 100vh;
-	background: url(/busconnect/img/sml_background.jpg); 
+	background: url(../img/sml_background.jpg); 
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -65,7 +65,7 @@ footer {
 @media (min-width: 1030px){
 	body {
 		height: 100vh;
-		background: url(/busconnect/img/background.jpg); 
+		background: url(../img/background.jpg); 
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
