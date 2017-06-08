@@ -28,7 +28,6 @@ body {
 #trainbuttons {
 	display: flex;
 	flex-direction: column;
-	width: 50%;	
 	margin: 0 auto;
 }
 
@@ -85,6 +84,11 @@ footer a {
 	}	
 	footer a {
 		display: none;
+	}
+}
+@media (min-width: 650px){
+	#trainbuttons {
+		max-width: 70%;
 	}
 }
 @media (max-height: 601px){
