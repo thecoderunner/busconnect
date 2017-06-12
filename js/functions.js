@@ -4,9 +4,9 @@ function generatehash(message, secret){
 };//end generatehash
 
 
-function constructURL(stopnum, routeid, directionid){	
+function constructURL(routetype, stopnum, routeid, directionid){	
 	var requesturl;
-	requesturl = "/v3/departures/route_type/0/stop/" + stopnum + "/route/" + routeid + "?direction_id=" + directionid + "&" + params; 
+	requesturl = "/v3/departures/route_type/" + routetype + "/stop/" + stopnum + "/route/" + routeid + "?direction_id=" + directionid + "&" + params; 
 	return ptvbaseurl + requesturl + "&signature=" + generatehash(requesturl, key).toString();
 }//end constructURL
 
@@ -31,7 +31,7 @@ function filterforstop(arrivaltimes){
 };//end filterstop
 
 function showtraindepartures(){
-	$("body").load("index.html");
+	window.location = './index.html';
 }
 
 function timeconversion(traintimes, startorend){

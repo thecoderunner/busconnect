@@ -1,13 +1,40 @@
-//Route type train is 0 bus is 2
-//Route id belgrave: 2, lilydale: 9. 736 is 952
-//Direction id to belgrave:3  and to lilydale:9. mitcham: 29
-//Train Stops: Blackburn is stop id 1023. Box hill 1026, Flinders st 1071, Melb Central 1120, Richmond 1162, Ringwood 1163
-//southern cross 1181 parliament: 1155
-//Bus stop for 736 stop id: 10885
+var routeTypes = {
+  "train": 0,
+  "bus": 2
+}
+var routeIds = {
+  "belgrave": 2,
+  "lilydale": 9,
+  "736": 952
+}
+var directionIds = {
+  "belgrave": 3,
+  "lilydale": 9,
+  "mitcham": 29,
+}
+var stopIds = {
+  "blackburn": 1023,
+  "boxhill": 1026,
+  "flindersst": 1071,
+  "melbournecentral": 1120,
+  "southerncross": 1181,
+  "parliament": 1155,
+  "richmond": 1162,
+  "blackburn736": 10885 
+}
+
+function JOURNEY(routeType, stopId, routeId, directionId){
+  this.routeType = routeType;
+  this.stopId = stopId;
+  this.routeId = routeId;
+  this.directionId = directionId;  
+}
 
 $(function(){
   $('button.btntrain').click(function(){
     $('#trainbuttons').hide();    
-    $.get("views/" + this.id + '.js');
+    var btrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds["belgrave"],directionIds["belgrave"]);
+    var ltrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds["lilydale"],directionIds["lilydale"]);
+    showtrainbusconnection(constructURL(btrains.routeType, btrains.stopId,btrains.routeId, btrains.directionId),constructURL(ltrains.routeType, ltrains.stopId,ltrains.routeId, ltrains.directionId));
   });
 });/*-------------------------------------------END Javascript----------------------------------------*/
