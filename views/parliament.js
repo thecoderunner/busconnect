@@ -6,12 +6,9 @@
 
 
 //Constructing URL for PTV API ajax request.
-var baseurl = "http://timetableapi.ptv.vic.gov.au";
 var belgraveurl = "/v3/departures/route_type/0/stop/1155/route/2?direction_id=3&"
 var lilydaleurl = "/v3/departures/route_type/0/stop/1155/route/9?direction_id=9&"
-var params = $.param({
-  devid:3000187
-});
+
 
 var finalbelurl = baseurl + belgraveurl + params + "&signature=" + generatehash(belgraveurl + params, key).toString();    
 var finallilurl = baseurl + lilydaleurl + params + "&signature=" + generatehash(lilydaleurl + params, key).toString();    

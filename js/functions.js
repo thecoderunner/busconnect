@@ -3,6 +3,14 @@ function generatehash(message, secret){
     return hmac;
 };//end generatehash
 
+
+function constructURL(stopnum, routeid, directionid){	
+	var requesturl;
+	requesturl = "/v3/departures/route_type/0/stop/" + stopnum + "/route/" + routeid + "?direction_id=" + directionid + "&" + params; 
+	return ptvbaseurl + requesturl + "&signature=" + generatehash(requesturl, key).toString();
+}//end constructURL
+
+
 function filtertrains(ptvtimes, comparisontime, boffset, aoffset){  
   	var tdeparture;
   	return ptvtimes.departures.filter(function (ptvtimes) {
@@ -60,7 +68,7 @@ function showbuses(obj){
 	$('#trainList, #trainList2').hide();
 
 	arrivalurl = "/v3/pattern/run/" + obj.id + "/route_type/0?stop_id=1071&";
-	arrivalurl2 = baseurl + arrivalurl + params + "&signature=" + generatehash(arrivalurl + params, key).toString();    
+	arrivalurl2 = ptvbaseurl + arrivalurl + params + "&signature=" + generatehash(arrivalurl + params, key).toString();    
 	
 	$.getJSON(arrivalurl2, function(ptvtimes){		
 		//Display train arrival time
