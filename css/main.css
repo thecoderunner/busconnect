@@ -19,10 +19,6 @@ body {
 .container button {
 	margin: 1em .2em;	
 }
-.container ul {
-	list-style: none;
-	text-align: center;
-}
 
 /* TRAIN DEPARTURE */
 #trainbuttons {
@@ -44,13 +40,6 @@ body {
 }
 #busList p {
 	display: inline;
-}
-#busList li{
-	display: inline;
-	background: rgb(255,255,255);
-	margin-top: 10px;
-	margin-bottom: 20px;
-	padding: 12px 20px; 
 }
 #busList button {	
 	display: block;
