@@ -3,57 +3,57 @@ function generatehash(message, secret){
     return hmac;
 };//end generatehash
 
-
+//Constructs initial URL to generate signature and final full url for PTV API
 function constructURL(routetype, stopnum, routeid, directionid){	
 	var requesturl;
 	requesturl = "/v3/departures/route_type/" + routetype + "/stop/" + stopnum + "/route/" + routeid + "?direction_id=" + directionid + "&" + params; 
 	return ptvbaseurl + requesturl + "&signature=" + generatehash(requesturl, key).toString();
 }//end constructURL
 
-
+//Filter out only the trains departing within given time window
 function filtertrains(ptvtimes, comparisontime, boffset, aoffset){  
   	var tdeparture;
   	return ptvtimes.departures.filter(function (ptvtimes) {
-  	tdeparture = moment(ptvtimes.scheduled_departure_utc).unix();
-  	if(tdeparture > (comparisontime - boffset) && tdeparture < (comparisontime + aoffset)){
-  		return true;
-  	}
-  	else {
-  		return false;
-  	}
-  });            
+		tdeparture = moment(ptvtimes.scheduled_departure_utc).unix();
+		if(tdeparture > (comparisontime - boffset) && tdeparture < (comparisontime + aoffset)){
+			return true;
+		}
+		else {
+			return false;
+		}
+  	});            
 };//end filtertrains
 
+//Filter out only the arrival times for destination stop.
 function filterforstop(arrivaltimes){
-  return arrivaltimes.departures.filter(function (arrivaltimes) {
-      return arrivaltimes.stop_id == '1023';      
+	return arrivaltimes.departures.filter(function (arrivaltimes) {
+    	return arrivaltimes.stop_id == '1023';      
   });			             
 };//end filterstop
 
+//Return user home
 function showtraindepartures(){
 	window.location = './index.html';
 }
+
 
 function timeconversion(traintimes, startorend){
 	var localtimes;
 	if(startorend == 0){
 		localtimes = "<ul class='list-group'>"  
 		$.each(traintimes, function(index, train){
-		  localtimes += "<li class='list-group-item'><a class='" + train.stop_id + "' id='" + train.run_id + "' onclick='showbuses(this)'>" + new Date(train.scheduled_departure_utc).toLocaleTimeString() + '</a></li>';              
-		});//end each
-		localtimes += "</ul>";
-		
+			localtimes += "<li class='list-group-item'><a class='" + train.stop_id + "' id='" + train.run_id + "' onclick='showbuses(this)'>" + new Date(train.scheduled_departure_utc).toLocaleTimeString() + '</a></li>';              
+		});
+		localtimes += "</ul>";		
 		return localtimes;  
 	}
 	else if(startorend == 1){	
-		localtimes = "<p class='list-group-item'>" + new Date(traintimes[0].scheduled_departure_utc).toLocaleTimeString() + "</p>";
-		
+		localtimes = "<p class='list-group-item'>" + new Date(traintimes[0].scheduled_departure_utc).toLocaleTimeString() + "</p>";		
 		return localtimes;  	
 	}
 	else if(startorend == 2){
 		localtimes = "<p class='list-group-item'>" + new Date(traintimes[0].scheduled_departure_utc).toLocaleTimeString() + "</p>";		
-		localtimes += "<button type='button' onclick='showtraindepartures()' class='btn btn-primary'>Back to train station</button>";
-		
+		localtimes += "<button type='button' onclick='showtraindepartures()' class='btn btn-primary'>Back to train station</button>";		
 		return localtimes;  
 	}
 	else{
@@ -64,9 +64,9 @@ function timeconversion(traintimes, startorend){
 
 function showbuses(obj){
 	var arrivalurl, arrivalurl2;
-	
-	$('#trainList, #trainList2').hide();
 
+	$('#trainList, #trainList2').hide();
+	
 	arrivalurl = "/v3/pattern/run/" + obj.id + "/route_type/0?stop_id=1071&";
 	arrivalurl2 = ptvbaseurl + arrivalurl + params + "&signature=" + generatehash(arrivalurl + params, key).toString();    
 	
@@ -83,33 +83,30 @@ function showbuses(obj){
 			var busdeparture;
 			busdeparture = filtertrains(bustimes, moment(blackburnarrival[0].scheduled_departure_utc).unix(), 0, 3600);
 			$("#busList").append("<h3 class='text-primary'>Bus departs</h3>" + timeconversion(busdeparture, 2));
-		});//end getjson bus departure
+		});
 
 	});//end getjson blackburn arrival	
 	
 };//end show buses
 
+//Request train times from PTV 
 function showtrainbusconnection(url, url2){
-  //BELGRAVE  
-  //Request train times from PTV
+  //BELGRAVE    
   $.getJSON(url, function(ptvtimes){    
     var btraintimes;
     btraintimes = filtertrains(ptvtimes, moment().unix(), 900, 900);
 
-    //Convert timezone and display times to page
     $("#trainList").html("<h2 class='text-primary'>Belgrave</h2>" + timeconversion(btraintimes, 0));
-  });//end getjson
+  });
 
   
   //LILYDALE  
-  //Request train times from PTV
   $.getJSON(url2, function(ptvtimes){        
     var ltraintimes 
     ltraintimes = filtertrains(ptvtimes, moment().unix(), 900, 900);
     
-    //Convert timezone and display times to page
     $("#trainList2").html("<h2 class='text-primary'>Lilydale</h2>" + timeconversion(ltraintimes, 0));
-  });//end getjson
+  });
 
 };//end showtrainbusconnection
 

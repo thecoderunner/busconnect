@@ -1,0 +1,19 @@
+{
+  "name": "busconnect",
+  "version": "1.0.0",
+  "description": "Web app for checking bus connections with trains",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecoderunner/busconnect.git"
+  },
+  "author": "Cameron Chong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thecoderunner/busconnect/issues"
+  },
+  "homepage": "https://github.com/thecoderunner/busconnect#readme"
+}
