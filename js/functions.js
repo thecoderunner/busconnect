@@ -1,6 +1,6 @@
 function generatehash(message, secret){
-    var hmac = CryptoJS.HmacSHA1(message, secret);
-    return hmac;
+	var hmac = CryptoJS.HmacSHA1(message, secret);
+	return hmac;
 };//end generatehash
 
 //Constructs initial URL to generate signature and final full url for PTV API
@@ -12,8 +12,8 @@ function constructURL(routetype, stopnum, routeid, directionid){
 
 //Filter out only the trains departing within given time window
 function filtertrains(ptvtimes, comparisontime, boffset, aoffset){  
-  	var tdeparture;
-  	return ptvtimes.departures.filter(function (ptvtimes) {
+	var tdeparture;
+	return ptvtimes.departures.filter(function (ptvtimes) {
 		tdeparture = moment(ptvtimes.scheduled_departure_utc).unix();
 		if(tdeparture > (comparisontime - boffset) && tdeparture < (comparisontime + aoffset)){
 			return true;
@@ -21,14 +21,14 @@ function filtertrains(ptvtimes, comparisontime, boffset, aoffset){
 		else {
 			return false;
 		}
-  	});            
+	});            
 };//end filtertrains
 
 //Filter out only the arrival times for destination stop.
 function filterforstop(arrivaltimes){
 	return arrivaltimes.departures.filter(function (arrivaltimes) {
-    	return arrivaltimes.stop_id == '1023';      
-  });			             
+		return arrivaltimes.stop_id == '1023';      
+});			             
 };//end filterstop
 
 //Return user home
@@ -78,7 +78,7 @@ function showbuses(obj){
 		$("#busList").append("<h3 class='text-primary'>Train arrives</h3>" + timeconversion(blackburnarrival, 1));
 		
 		//Display bus arrival time
-		busurl = "http://timetableapi.ptv.vic.gov.au/v3/departures/route_type/2/stop/10885/route/952?direction_id=29&devid=3000187&signature=5F01F1820EECDBD0743B3C153D3FFAC43855E44A";
+		busurl = "https://timetableapi.ptv.vic.gov.au/v3/departures/route_type/2/stop/10885/route/952?direction_id=29&devid=3000187&signature=5F01F1820EECDBD0743B3C153D3FFAC43855E44A";
 		$.getJSON(busurl, function(bustimes){
 			var busdeparture;
 			busdeparture = filtertrains(bustimes, moment(blackburnarrival[0].scheduled_departure_utc).unix(), 0, 3600);
@@ -91,23 +91,22 @@ function showbuses(obj){
 
 //Request train times from PTV 
 function showtrainbusconnection(url, url2){
-  //BELGRAVE    
-  $.getJSON(url, function(ptvtimes){    
-    var btraintimes;
-    btraintimes = filtertrains(ptvtimes, moment().unix(), 900, 900);
+	//BELGRAVE    
+	$.getJSON(url, function(ptvtimes){    
+		var btraintimes;
+		btraintimes = filtertrains(ptvtimes, moment().unix(), 900, 900);
 
-    $("#trainList").html("<h2 class='text-primary'>Belgrave</h2>" + timeconversion(btraintimes, 0));
-  });
+		$("#trainList").html("<h2 class='text-primary'>Belgrave</h2>" + timeconversion(btraintimes, 0));
+	});
 
-  
-  //LILYDALE  
-  $.getJSON(url2, function(ptvtimes){        
-    var ltraintimes 
-    ltraintimes = filtertrains(ptvtimes, moment().unix(), 900, 900);
-    
-    $("#trainList2").html("<h2 class='text-primary'>Lilydale</h2>" + timeconversion(ltraintimes, 0));
-  });
+	
+	//LILYDALE  
+	$.getJSON(url2, function(ptvtimes){        
+		var ltraintimes 
+		ltraintimes = filtertrains(ptvtimes, moment().unix(), 900, 900);
+		
+		$("#trainList2").html("<h2 class='text-primary'>Lilydale</h2>" + timeconversion(ltraintimes, 0));
+	});
+};//end showtrainbusconnection	
 
-};//end showtrainbusconnection
-
-/*-------------------------------------------END Javascript----------------------------------------*/
+/*-------------------------------------------END----------------------------------------*/
