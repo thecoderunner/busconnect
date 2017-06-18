@@ -86,7 +86,7 @@ function showbuses(obj){
 
 	});//end getjson blackburn arrival	
 	
-};//end show buses
+}//end show buses
 
 //Request train times from PTV 
 function showtrainbusconnection(url, url2){
@@ -101,7 +101,7 @@ function showtrainbusconnection(url, url2){
 	
 	//LILYDALE  
 	$.getJSON(url2, function(ptvtimes){        
-		var ltraintimes 
+		var ltraintimes; 
 		ltraintimes = filtertrains(ptvtimes, moment().unix(), 900, 900);
 		
 		$("#trainList2").html("<h2 class='text-primary'>Lilydale</h2>" + timeconversion(ltraintimes, 0));
