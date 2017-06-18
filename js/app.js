@@ -2,17 +2,17 @@ var app = !function(){
   var routeTypes = {
     "train": 0,
     "bus": 2
-  }
+  };
   var routeIds = {
     "belgrave": 2,
     "lilydale": 9,
     "736": 952
-  }
+  };
   var directionIds = {
     "belgrave": 3,
     "lilydale": 9,
     "mitcham": 29,
-  }
+  };
   var stopIds = {
     "blackburn": 1023,
     "boxhill": 1026,
@@ -22,7 +22,7 @@ var app = !function(){
     "parliament": 1155,
     "richmond": 1162,
     "blackburn736": 10885 
-  }
+  };
 
   function JOURNEY(routeType, stopId, routeId, directionId){
     this.routeType = routeType;
@@ -34,8 +34,8 @@ var app = !function(){
   $(function(){
     $('button.btntrain').click(function(){
       $('#trainbuttons').hide();    
-      let btrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds["belgrave"],directionIds["belgrave"]);
-      let ltrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds["lilydale"],directionIds["lilydale"]);
+      let btrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds.belgrave,directionIds.belgrave);
+      let ltrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds.lilydale,directionIds.lilydale);
       showtrainbusconnection(constructURL(btrains.routeType, btrains.stopId,btrains.routeId, btrains.directionId),constructURL(ltrains.routeType, ltrains.stopId,ltrains.routeId, ltrains.directionId));
     });
   });

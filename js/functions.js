@@ -1,7 +1,7 @@
 function generatehash(message, secret){
 	var hmac = CryptoJS.HmacSHA1(message, secret);
 	return hmac;
-};//end generatehash
+}//end generatehash
 
 //Constructs initial URL to generate signature and final full url for PTV API
 function constructURL(routetype, stopnum, routeid, directionid){	
@@ -22,25 +22,24 @@ function filtertrains(ptvtimes, comparisontime, boffset, aoffset){
 			return false;
 		}
 	});            
-};//end filtertrains
+}//end filtertrains
 
 //Filter out only the arrival times for destination stop.
 function filterforstop(arrivaltimes){
 	return arrivaltimes.departures.filter(function (arrivaltimes) {
 		return arrivaltimes.stop_id == '1023';      
 });			             
-};//end filterstop
+}//end filterstop
 
 //Return user home
 function showtraindepartures(){
 	window.location = './index.html';
 }
 
-
 function timeconversion(traintimes, startorend){
 	var localtimes;
-	if(startorend == 0){
-		localtimes = "<ul class='list-group'>"  
+	if(startorend === 0){
+		localtimes = "<ul class='list-group'>";  
 		$.each(traintimes, function(index, train){
 			localtimes += "<li class='list-group-item'><a class='" + train.stop_id + "' id='" + train.run_id + "' onclick='showbuses(this)'>" + new Date(train.scheduled_departure_utc).toLocaleTimeString() + '</a></li>';              
 		});
@@ -59,7 +58,7 @@ function timeconversion(traintimes, startorend){
 	else{
 		throw "You broke it";
 	}
-}; //end timeconversion
+} //end timeconversion
 
 
 function showbuses(obj){
@@ -107,6 +106,6 @@ function showtrainbusconnection(url, url2){
 		
 		$("#trainList2").html("<h2 class='text-primary'>Lilydale</h2>" + timeconversion(ltraintimes, 0));
 	});
-};//end showtrainbusconnection	
+}//end showtrainbusconnection	
 
 /*-------------------------------------------END----------------------------------------*/
