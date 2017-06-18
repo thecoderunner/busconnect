@@ -1,4 +1,4 @@
-var app = !function(){
+!function(){
   var routeTypes = {
     "train": 0,
     "bus": 2
