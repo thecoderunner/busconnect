@@ -34,8 +34,8 @@
   $(function(){
     $('button.btntrain').click(function(){
       $('#trainbuttons').hide();    
-      let btrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds.belgrave,directionIds.belgrave);
-      let ltrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds.lilydale,directionIds.lilydale);
+      var btrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds.belgrave,directionIds.belgrave);
+      var ltrains = new JOURNEY(routeTypes[this.getAttribute('data-routeType')],stopIds[this.getAttribute('data-stopId')],routeIds.lilydale,directionIds.lilydale);
       showtrainbusconnection(constructURL(btrains.routeType, btrains.stopId,btrains.routeId, btrains.directionId),constructURL(ltrains.routeType, ltrains.stopId,ltrains.routeId, ltrains.directionId));
     });
   });
