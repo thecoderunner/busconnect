@@ -21,11 +21,6 @@ body {
 	margin: 1em .2em;	
 }
 
-/* HEADER */
-header {
-	margin-bottom: 2.5em;
-}
-
 /* TRAIN DEPARTURE */
 #trainbuttons {
 	display: flex;
