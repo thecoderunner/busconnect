@@ -10,7 +10,7 @@ var routeIds = {
 var directionIds = {
   "belgrave": 3,
   "lilydale": 9,
-  "mitcham": 29,
+  "mitcham": 28,
 };
 var stopIds = {
   "blackburn": 1023,

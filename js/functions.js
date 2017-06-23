@@ -5,6 +5,7 @@ function generatehash(message, secret){
 //Constructs URL to get departure times from PTV API
 function constructDepartureURL(routeType, stopNum, routeId, directionId){	
 	var requestUrl = "/v3/departures/route_type/" + routeType + "/stop/" + stopNum + "/route/" + routeId + "?direction_id=" + directionId + "&" + params; 
+	console.log(ptvbaseurl + requestUrl + "&signature=" + generatehash(requestUrl, key).toString());
 	return ptvbaseurl + requestUrl + "&signature=" + generatehash(requestUrl, key).toString();
 }//end constructDepartureURL
 
@@ -15,8 +16,8 @@ function constructArrivalURL(runId, routeType, stopId){
 }//end constructArrivalURL
 
 //Filter out only the trains departing within given time window
-function filtertrains(timestofilter, timewindow, beforeoffset, afteroffset){  
-	return timestofilter.departures.filter(function (timestofilter) {
+function filterfortimewindow(timestofilter, timewindow, beforeoffset, afteroffset){  
+	var filteredtimes = timestofilter.departures.filter(function (timestofilter) {
 		var timeofdep = moment(timestofilter.scheduled_departure_utc).unix();
 		if(timeofdep > (timewindow - beforeoffset) && timeofdep < (timewindow + afteroffset)){
 			return true;
@@ -24,8 +25,14 @@ function filtertrains(timestofilter, timewindow, beforeoffset, afteroffset){
 		else {
 			return false;
 		}
-	});            
-}//end filtertrains
+	});
+	if(filteredtimes === undefined){
+		return "No Buses";
+	}
+	else {
+		return filteredtimes;
+	}	
+}//end filterfortimewindow
 
 //Filter out only the arrival times for destination stop.
 function filterforstop(departuretimes, stop){
@@ -39,22 +46,22 @@ function showtraindepartures(){
 	window.location = './index.html';
 }
 
-function timeconversion(traintimes, startorend){
+function timeconversion(timestoconvert, startorend){
 	var localtimes;
 	if(startorend === 0){
 		localtimes = "<ul class='list-group'>";  
-		$.each(traintimes, function(index, train){
+		$.each(timestoconvert, function(index, train){
 			localtimes += "<li class='list-group-item'><a class='" + train.stop_id + "' id='" + train.run_id + "' onclick='showbuses(this)'>" + new Date(train.scheduled_departure_utc).toLocaleTimeString() + '</a></li>';              
 		});
 		localtimes += "</ul>";		
 		return localtimes;  
 	}
 	else if(startorend == 1){	
-		localtimes = "<p class='list-group-item'>" + new Date(traintimes[0].scheduled_departure_utc).toLocaleTimeString() + "</p>";		
+		localtimes = "<p class='list-group-item'>" + new Date(timestoconvert[0].scheduled_departure_utc).toLocaleTimeString() + "</p>";		
 		return localtimes;  	
 	}
 	else if(startorend == 2){
-		localtimes = "<p class='list-group-item'>" + new Date(traintimes[0].scheduled_departure_utc).toLocaleTimeString() + "</p>";		
+		localtimes = "<p class='list-group-item'>" + new Date(timestoconvert[0].scheduled_departure_utc).toLocaleTimeString() + "</p>";		
 		localtimes += "<button type='button' onclick='showtraindepartures()' class='btn btn-primary'>Back to train station</button>";		
 		return localtimes;  
 	}
@@ -74,9 +81,9 @@ function showbuses(obj){
 		$("#busList").append("<h3 class='text-primary'>Train arrives</h3>" + timeconversion(connectPointArrivalTime, 1));	
 		
 		//Display bus departure time
-		var busurl = constructDepartureURL(2,10885,952,29);
+		var busurl = constructDepartureURL(2,10885,952,28);
 		$.getJSON(busurl, function(bustimes){
-			var busdeparture = filtertrains(bustimes, moment(connectPointArrivalTime[0].scheduled_departure_utc).unix(), 0, 3600);
+			var busdeparture = filterfortimewindow(bustimes, moment(connectPointArrivalTime[0].scheduled_departure_utc).unix(), 0, 3600);
 			$("#busList").append("<h3 class='text-primary'>Bus departs</h3>" + timeconversion(busdeparture, 2));
 		});
 	
@@ -89,14 +96,14 @@ function showbuses(obj){
 function showtrainbusconnection(url, url2){
 	//BELGRAVE    
 	$.getJSON(url, function(timestofilter){    
-		var btraintimes = filtertrains(timestofilter, moment().unix(), 900, 900);
-		$("#trainList").html("<h2 class='text-primary'>Belgrave</h2>" + timeconversion(btraintimes, 0));
+		var btimestoconvert = filterfortimewindow(timestofilter, moment().unix(), 900, 900);
+		$("#trainList").html("<h2 class='text-primary'>Belgrave</h2>" + timeconversion(btimestoconvert, 0));
 	});
 
 	//LILYDALE  
 	$.getJSON(url2, function(timestofilter){        
-		var ltraintimes = filtertrains(timestofilter, moment().unix(), 900, 900);		
-		$("#trainList2").html("<h2 class='text-primary'>Lilydale</h2>" + timeconversion(ltraintimes, 0));
+		var ltimestoconvert = filterfortimewindow(timestofilter, moment().unix(), 900, 900);		
+		$("#trainList2").html("<h2 class='text-primary'>Lilydale</h2>" + timeconversion(ltimestoconvert, 0));
 	});
 }//end showtrainbusconnection	
 
