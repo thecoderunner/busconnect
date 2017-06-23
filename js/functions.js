@@ -66,22 +66,22 @@ function timeconversion(traintimes, startorend){
 function showbuses(obj){
 	$('#trainList, #trainList2').hide();
 	var trainArrivalUrl = constructArrivalURL(obj.id,0,1023);
-	var blackburnarrival;
+	var connectPointArrivalTime;
 	$.getJSON(trainArrivalUrl, function(timestofilter){		
 		//Display train arrival time
-		blackburnarrival = filterforstop(timestofilter, 1023);		
+		connectPointArrivalTime = filterforstop(timestofilter, 1023);		
 		$('#busList').html("<h2>Train/Bus Connections</h2>");
-		$("#busList").append("<h3 class='text-primary'>Train arrives</h3>" + timeconversion(blackburnarrival, 1));	
+		$("#busList").append("<h3 class='text-primary'>Train arrives</h3>" + timeconversion(connectPointArrivalTime, 1));	
 		
-		//Display bus arrival time
+		//Display bus departure time
 		var busurl = constructDepartureURL(2,10885,952,29);
 		$.getJSON(busurl, function(bustimes){
-			var busdeparture = filtertrains(bustimes, moment(blackburnarrival[0].scheduled_departure_utc).unix(), 0, 3600);
+			var busdeparture = filtertrains(bustimes, moment(connectPointArrivalTime[0].scheduled_departure_utc).unix(), 0, 3600);
 			$("#busList").append("<h3 class='text-primary'>Bus departs</h3>" + timeconversion(busdeparture, 2));
 		});
 	
 	});
-	//end getjson blackburn arrival	
+	//end ajax requests
 	
 }//end show buses
 

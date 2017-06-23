@@ -9,15 +9,21 @@ body {
 	background-size: cover;
 }
 .container {
-	margin: 3em auto;
+	margin: 1em auto;
 	text-align: center;	
 	border-radius: 5px;
 	max-width: 80%;		
 	background: rgba(255,255,255,0.8);
 	min-height: 70vh;
 }
+
 .container button {
 	margin: 1em .2em;	
+}
+
+/* HEADER */
+header {
+	margin-bottom: 2.5em;
 }
 
 /* TRAIN DEPARTURE */
@@ -47,13 +53,15 @@ body {
 }
 
 /* FOOTER */
-footer {
-	padding-top: 1%;
+footer {	
+	padding-top: 5px;	
 	text-align: center;
 	background: rgba(220,220,220,0.7);
 }
-footer a {
+footer a, p {
 	color: black;
+	font-size: 12px;
+	margin: 0;
 }
 
 /*MEDIA QUERIES*/
@@ -64,23 +72,26 @@ footer a {
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
-	#trainbuttons {
-		flex-direction: row;		
+	.container {
+		max-width: 40%;
+	}
+	#trainbuttons {			
 		justify-content: center;
+		max-width: 40%;
 	}
 	#busList button {	
 		margin: 3em auto;
-	}	
-	footer a {
-		display: none;
 	}
+	footer p {
+		font-size: 1em;
+	}		
 }
 @media (min-width: 650px){
 	#trainbuttons {
-		max-width: 70%;
+		max-width: 60%;
 	}
 }
-@media (max-height: 601px){
+@media (max-height: 650px){	
 	footer {
 		display: none;
 	}
