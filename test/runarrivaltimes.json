@@ -1,0 +1,263 @@
+{
+  "departures": [
+    {
+      "stop_id": 1155,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:31:00Z",
+      "estimated_departure_utc": "2017-06-27T00:33:00Z",
+      "at_platform": false,
+      "platform_number": "4",
+      "flags": ""
+    },
+    {
+      "stop_id": 1120,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:33:00Z",
+      "estimated_departure_utc": "2017-06-27T00:36:00Z",
+      "at_platform": false,
+      "platform_number": "4",
+      "flags": ""
+    },
+    {
+      "stop_id": 1068,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:34:00Z",
+      "estimated_departure_utc": "2017-06-27T00:38:00Z",
+      "at_platform": false,
+      "platform_number": "4",
+      "flags": ""
+    },
+    {
+      "stop_id": 1181,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:36:00Z",
+      "estimated_departure_utc": "2017-06-27T00:40:00Z",
+      "at_platform": false,
+      "platform_number": "10",
+      "flags": ""
+    },
+    {
+      "stop_id": 1071,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:43:00Z",
+      "estimated_departure_utc": null,
+      "at_platform": false,
+      "platform_number": "4",
+      "flags": ""
+    },
+    {
+      "stop_id": 1162,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:46:00Z",
+      "estimated_departure_utc": "2017-06-27T00:46:49Z",
+      "at_platform": false,
+      "platform_number": "10",
+      "flags": ""
+    },
+    {
+      "stop_id": 1059,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:48:00Z",
+      "estimated_departure_utc": "2017-06-27T00:48:49Z",
+      "at_platform": false,
+      "platform_number": "2",
+      "flags": ""
+    },
+    {
+      "stop_id": 1030,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:50:00Z",
+      "estimated_departure_utc": "2017-06-27T00:50:29Z",
+      "at_platform": false,
+      "platform_number": "4",
+      "flags": ""
+    },
+    {
+      "stop_id": 1090,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:52:00Z",
+      "estimated_departure_utc": "2017-06-27T00:54:09Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1080,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:54:00Z",
+      "estimated_departure_utc": "2017-06-27T00:54:49Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1012,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:56:00Z",
+      "estimated_departure_utc": "2017-06-27T00:57:21Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1032,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T00:58:00Z",
+      "estimated_departure_utc": "2017-06-27T00:59:00Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1057,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:00:00Z",
+      "estimated_departure_utc": "2017-06-27T01:01:00Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1033,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:02:00Z",
+      "estimated_departure_utc": "2017-06-27T01:03:00Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1037,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:04:00Z",
+      "estimated_departure_utc": "2017-06-27T01:05:00Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1189,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:06:00Z",
+      "estimated_departure_utc": "2017-06-27T01:07:00Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1129,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:08:00Z",
+      "estimated_departure_utc": "2017-06-27T01:09:00Z",
+      "at_platform": false,
+      "platform_number": "3",
+      "flags": ""
+    },
+    {
+      "stop_id": 1026,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:10:00Z",
+      "estimated_departure_utc": "2017-06-27T01:12:00Z",
+      "at_platform": false,
+      "platform_number": "4",
+      "flags": ""
+    },
+    {
+      "stop_id": 1111,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:12:00Z",
+      "estimated_departure_utc": "2017-06-27T01:15:00Z",
+      "at_platform": false,
+      "platform_number": "2",
+      "flags": ""
+    },
+    {
+      "stop_id": 1023,
+      "route_id": 2,
+      "run_id": 951435,
+      "direction_id": 3,
+      "disruption_ids": [],
+      "scheduled_departure_utc": "2017-06-27T01:14:00Z",
+      "estimated_departure_utc": null,
+      "at_platform": false,
+      "platform_number": "2",
+      "flags": "E"
+    }
+  ],
+  "disruptions": [
+    {
+      "disruption_id": 98349,
+      "title": "Passengers please take care when exiting and entering Southern Cross Station at the entrance of Bourke Street and Spencer Street. Safety bollards have been installed to prevent vehicles entering the pedestrian footpath.",
+      "url": "http://ptv.vic.gov.au/live-travel-updates/",
+      "description": "Passengers please take care when exiting and entering Southern Cross Station at the entrance of Bourke Street and Spencer Street. Safety bollards have been installed to prevent vehicles entering the pedestrian footpath.",
+      "disruption_status": "Current",
+      "disruption_type": "General",
+      "published_on": "2017-06-24T14:54:03Z",
+      "last_updated": "2017-06-24T22:39:55Z",
+      "from_date": "2017-06-24T14:47:00Z",
+      "to_date": null,
+      "routes": []
+    }
+  ],
+  "status": {
+    "version": "3.0",
+    "health": 1
+  }
+}
