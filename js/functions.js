@@ -5,7 +5,6 @@ function generatehash(message, secret){
 //Constructs URL to get departure times from PTV API
 function constructDepartureURL(routeType, stopNum, routeId, directionId){	
 	var requestUrl = "/v3/departures/route_type/" + routeType + "/stop/" + stopNum + "/route/" + routeId + "?direction_id=" + directionId + "&" + params; 
-	console.log(ptvbaseurl + requestUrl + "&signature=" + generatehash(requestUrl, key).toString());
 	return ptvbaseurl + requestUrl + "&signature=" + generatehash(requestUrl, key).toString();
 }//end constructDepartureURL
 
@@ -74,22 +73,21 @@ function showbuses(obj){
 	$('#trainList, #trainList2').hide();
 	var trainArrivalUrl = constructArrivalURL(obj.id,0,1023);
 	var connectPointArrivalTime;
+
 	$.getJSON(trainArrivalUrl, function(timestofilter){		
 		//Display train arrival time
 		connectPointArrivalTime = filterforstop(timestofilter, 1023);		
 		$('#busList').html("<h2>Train/Bus Connections</h2>");
 		$("#busList").append("<h3 class='text-primary'>Train arrives</h3>" + timeconversion(connectPointArrivalTime, 1));	
-		
+	}).done(function() {
 		//Display bus departure time
 		var busurl = constructDepartureURL(2,10885,952,28);
 		$.getJSON(busurl, function(bustimes){
-			var busdeparture = filterfortimewindow(bustimes, moment(connectPointArrivalTime[0].scheduled_departure_utc).unix(), 0, 3600);
-			$("#busList").append("<h3 class='text-primary'>Bus departs</h3>" + timeconversion(busdeparture, 2));
+		var busdeparture = filterfortimewindow(bustimes, moment(connectPointArrivalTime[0].scheduled_departure_utc).unix(), 0, 3600);
+		$("#busList").append("<h3 class='text-primary'>Bus departs</h3>" + timeconversion(busdeparture, 2));
 		});
-	
 	});
-	//end ajax requests
-	
+
 }//end show buses
 
 //Request train times from PTV 
