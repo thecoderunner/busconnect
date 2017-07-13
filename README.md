@@ -7,4 +7,4 @@ This app relies on the PTV API, documented here http://timetableapi.ptv.vic.gov.
 Before you can start using the PTV you will need to register for an API key, which can be done here https://www.ptv.vic.gov.au/about-ptv/ptv-data-and-reports/digital-products/ptv-timetable-api/
 
 
-If you want contribute, first clone it and create a file called "config.js" in the js folder. Then add your API key as a variable called "key".
+
