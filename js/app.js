@@ -22,7 +22,7 @@ var stopIds = {
   "richmond": 1162,
   "blackburn736": 10885 
 };
-
+ 
 function JOURNEY(routeType, stopId, routeId, directionId){
   this.routeType = routeType;
   this.stopId = stopId;
